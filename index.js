@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const translateClient = require('@google-cloud/translate')({
-  projectId: 'my-project-2-164413',
-  keyFilename: 'discordTranslator-6352a8db66ff.json'
+  projectId: 'project-id',
+  keyFilename: '/path/to/keyfile.json'
 });
 
 const bot = new Discord.Client()
@@ -74,4 +74,4 @@ bot.on('message', (message) => {
 })
 
 // Log in your bot
-bot.login('MzAwNjI1NjAwODQwODU5NjQ4.C8-ZEw._WRRTGwXhJeN3Q1Zt6cOvWVLzI0')
+bot.login('token')
