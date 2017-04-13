@@ -6,13 +6,13 @@ const translateClient = require('@google-cloud/translate')({
 
 const bot = new Discord.Client()
 
-var languagesObj = {}
-var languageCodes = ''
+let languagesObj = {}
+let languageCodes = ''
 
 // Get a list of supported languages
 translateClient.getLanguages(function(err, languages) {
   if (!err) {
-    for(var k in languages) {
+    for(let k in languages) {
       languagesObj[languages[k].name] = languages[k].code
       languageCodes += `**${languages[k].name}**: ${languages[k].code}\n`
     }
@@ -28,10 +28,10 @@ bot.on('ready', () => {
 
 // Event listener for messages
 bot.on('message', (message) => {
-  var msgArr = message.content.split(' ');
-  var command = msgArr[0]
-  var arg1 = msgArr[1]
-  var arg2 = msgArr[2]
+  let msgArr = message.content.split(' ');
+  let command = msgArr[0]
+  let arg1 = msgArr[1]
+  let arg2 = msgArr[2]
 
   // List commands
   if(command === '$commands') {
@@ -62,7 +62,7 @@ bot.on('message', (message) => {
 
   // Does a langauge code lookup based on the language given as an argument
   else if(command === '$langcode') {
-    var capitalizedLang = arg1[0].toUpperCase() + arg1.slice(1)
+    let capitalizedLang = arg1[0].toUpperCase() + arg1.slice(1)
 
     if(Object.keys(languagesObj).indexOf(capitalizedLang) > -1) {
       message.channel.sendMessage(`__**${capitalizedLang} Language Code:**__\n${languagesObj[capitalizedLang]}`)
